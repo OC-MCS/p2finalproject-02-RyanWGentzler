@@ -17,6 +17,7 @@ int main()
 	int globalTimer = 0;
 	Player ship;
 	MissileGroup grp;
+	Squadron squad;
 	Alien alien;
 
 	RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "aliens!");
@@ -44,7 +45,7 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	Texture alienTexture;
-	if (!alienTexture.loadFromFile("alien2.png"))
+	if (!alienTexture.loadFromFile("alien.png"))
 	{
 		cout << "Unable to load alien texture!" << endl;
 		exit(EXIT_FAILURE);
@@ -61,8 +62,12 @@ int main()
 	// create sprite and texture it
 	ship.setTexture(shipTexture);
 
-	alien.setTexture(alienTexture);
-	alien.setPosition(window.getSize().x / 2.0f, window.getSize().y / 2.0f);
+	squad.setTexture(alienTexture);
+	for(int i = 0; i < 10; i++)
+	{ 
+		squad.addAlien(75*i + 40, 30);
+	}
+
 
 	grp.setTexture(missileTexture);
 
@@ -93,7 +98,9 @@ int main()
 			}
 		}
 
+		
 		grp.moveMissiles();
+		squad.move(1);
 		//===========================================================
 		// Everything from here to the end of the loop is where you put your
 		// code to produce ONE frame of the animation. The next iteration of the loop will
@@ -102,15 +109,14 @@ int main()
 
 		window.draw(background);
 
-		
 
+
+		grp.draw(window);
 		// draw the ship on top of background 
 		// (the ship from previous frame was erased when we drew background)
 		ship.move();
 		window.draw(ship.getSprite());
-		grp.draw(window);
-		alien.draw(window);
-
+		squad.draw(window);
 
 		// end the current frame; this makes everything that we have 
 		// already "drawn" actually show up on the screen

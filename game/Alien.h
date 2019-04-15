@@ -10,6 +10,6 @@ private:
 public:
 	void setTexture(Texture&);
 	void setPosition(int x, int y);
-	void move();
+	void move(int);
 	void draw(RenderWindow&);
 };

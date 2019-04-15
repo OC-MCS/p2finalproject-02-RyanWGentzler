@@ -18,7 +18,7 @@ void MissileGroup::addMiss(Vector2f pos)
 	Sprite temp;
 	temp.setTexture(txt);
 	temp.setPosition(pos);
-	temp.move(5, 0);
+	temp.move(7, 5);
 	missiles.push_back(temp);
 }
 
