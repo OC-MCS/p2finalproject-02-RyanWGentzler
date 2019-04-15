@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "MissileGroup.h"
+#include "Squadron.h"
 using namespace std;
 using namespace sf; 
 
@@ -16,6 +17,7 @@ int main()
 	int globalTimer = 0;
 	Player ship;
 	MissileGroup grp;
+	Alien alien;
 
 	RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "aliens!");
 	// Limit the framerate to 60 frames per second
@@ -41,6 +43,12 @@ int main()
 		cout << "Unable to load missile texture!" << endl;
 		exit(EXIT_FAILURE);
 	}
+	Texture alienTexture;
+	if (!alienTexture.loadFromFile("alien2.png"))
+	{
+		cout << "Unable to load alien texture!" << endl;
+		exit(EXIT_FAILURE);
+	}
 
 	// A sprite is a thing we can draw and manipulate on the screen.
 	// We have to give it a "texture" to specify what it looks like
@@ -52,6 +60,9 @@ int main()
 
 	// create sprite and texture it
 	ship.setTexture(shipTexture);
+
+	alien.setTexture(alienTexture);
+	alien.setPosition(window.getSize().x / 2.0f, window.getSize().y / 2.0f);
 
 	grp.setTexture(missileTexture);
 
@@ -98,12 +109,15 @@ int main()
 		ship.move();
 		window.draw(ship.getSprite());
 		grp.draw(window);
+		alien.draw(window);
 
 
 		// end the current frame; this makes everything that we have 
 		// already "drawn" actually show up on the screen
 		window.display();
 
+		if (globalTimer < 1000000)
+			globalTimer++;
 	}
 
 	return 0;
