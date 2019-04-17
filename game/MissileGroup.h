@@ -11,6 +11,8 @@ private:
 	list<Sprite> :: iterator itr;
 	Texture txt;
 public:
+	int getSize();
+	Sprite getSprite(int);
 	void draw(RenderWindow&);
 	void setTexture(Texture&);
 	void addMiss(Vector2f);

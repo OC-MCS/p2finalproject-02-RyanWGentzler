@@ -21,11 +21,38 @@ void Squadron::draw(RenderWindow& win)
 	}
 }
 
-void Squadron::move(int y)
+bool Squadron::move(int y)
 {
+	bool limit = false;
 	for (itr = squad.begin(); itr != squad.end(); itr++)
 	{
-		if (itr->getPosition().y < 500)
+		if (itr->getPosition().y < 480 && y > 0)
 			itr->move(0, y);
+		else if (y < 0)
+		{
+			itr->move(0, y);
+			limit = false;
+		}
+		else
+			limit = true;
 	}
+	return limit;
+}
+
+bool Squadron::intersect(Sprite& other)
+{
+	bool inter = false;
+	for (itr = squad.begin(); itr != squad.end() && !inter; itr++)
+	{
+		if (itr->getGlobalBounds().intersects(other.getGlobalBounds()))
+		{
+			inter = true;
+		}
+	}
+	return inter;
+}
+
+void Squadron::remAlien(Sprite& alien)
+{
+	squad.remove(alien);
 }

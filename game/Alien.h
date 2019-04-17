@@ -8,6 +8,7 @@ class Alien
 private:
 	Sprite ship;
 public:
+	Sprite getSprite();
 	void setTexture(Texture&);
 	void setPosition(int x, int y);
 	void move(int);

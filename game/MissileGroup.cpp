@@ -1,5 +1,20 @@
 #include "MissileGroup.h"
 
+int MissileGroup::getSize()
+{
+	return missiles.size();
+}
+
+Sprite MissileGroup::getSprite(int i)
+{
+	itr = missiles.begin();
+	for (int t = 0; t < i; t++)
+	{
+		itr++;
+	}
+	return *itr;
+}
+
 void MissileGroup::draw(RenderWindow& win)
 {
 	for (itr = missiles.begin(); itr != missiles.end(); itr++)
@@ -41,7 +56,7 @@ void MissileGroup::moveMissiles()
 	}
 }
 
-void MissileGroup::remMiss(Sprite& miss)
+void MissileGroup::remMiss(Sprite& spt)
 {
-	itr = missiles.erase(itr);
+	missiles.remove(spt);
 }

@@ -7,11 +7,14 @@ class Player
 {
 private:
 	Sprite ship;
-	int lives;
+	int lives = 3;
+	bool isAlive = true;
 public:
 	Sprite getSprite();
 	Vector2f getPosition();
+	int getLives();
 	void setTexture(Texture&);
 	void setPosition(float, float);
 	void move();
+	void modlives(int);
 };

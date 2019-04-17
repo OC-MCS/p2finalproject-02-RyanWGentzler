@@ -1,5 +1,10 @@
 #include "Alien.h"
 
+Sprite Alien::getSprite()
+{
+	return ship;
+}
+
 void Alien::setTexture(Texture& text)
 {
 	ship.setTexture(text);

@@ -13,6 +13,7 @@ public:
 	void setTexture(Texture&);
 	void addAlien(int, int);
 	void draw(RenderWindow&);
-	void move(int);
+	bool move(int);
+	bool intersect(Sprite&);
 	void remAlien(Sprite&);
 };

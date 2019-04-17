@@ -15,6 +15,7 @@ int main()
 	const int WINDOW_WIDTH = 800;
 	const int WINDOW_HEIGHT = 600;
 	int globalTimer = 0;
+	bool atLimit = false;
 	Player ship;
 	MissileGroup grp;
 	Squadron squad;
@@ -98,9 +99,26 @@ int main()
 			}
 		}
 
-		
+		if (globalTimer % 20 == 0)
+			atLimit = squad.move(10);
+
+
+		if (atLimit)
+		{
+			ship.modlives(-1);
+			atLimit = squad.move(-450);
+		}
+
+		for (int i = 0; i < grp.getSize(); i++)
+		{
+			if (squad.intersect(grp.getSprite(i)))
+			{
+				grp.remMiss(grp.getSprite(i));
+			}
+		}
+
 		grp.moveMissiles();
-		squad.move(1);
+
 		//===========================================================
 		// Everything from here to the end of the loop is where you put your
 		// code to produce ONE frame of the animation. The next iteration of the loop will
