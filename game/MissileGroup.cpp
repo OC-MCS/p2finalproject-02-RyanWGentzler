@@ -47,7 +47,7 @@ void MissileGroup::moveMissiles()
 		itr->move(0, MISDIS);
 		if (itr->getPosition().y < -10)
 		{
-			remMiss(*itr);
+			remMiss();
 		}
 		else
 		{
@@ -56,7 +56,7 @@ void MissileGroup::moveMissiles()
 	}
 }
 
-void MissileGroup::remMiss(Sprite& spt)
+void MissileGroup::remMiss()
 {
-	missiles.remove(spt);
+	itr = missiles.erase(itr);
 }

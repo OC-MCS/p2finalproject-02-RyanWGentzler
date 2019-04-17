@@ -109,13 +109,13 @@ int main()
 			atLimit = squad.move(-450);
 		}
 
-		for (int i = 0; i < grp.getSize(); i++)
-		{
-			if (squad.intersect(grp.getSprite(i)))
-			{
-				grp.remMiss(grp.getSprite(i));
-			}
-		}
+		//for (int i = 0; i < grp.getSize(); i++)
+		//{
+		//	if (squad.intersect(grp.getSprite(i)))
+		//	{
+		//		grp.remMiss(grp.getSprite(i));
+		//	}
+		//}
 
 		grp.moveMissiles();
 

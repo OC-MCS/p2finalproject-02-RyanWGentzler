@@ -54,5 +54,8 @@ bool Squadron::intersect(Sprite& other)
 
 void Squadron::remAlien(Sprite& alien)
 {
-	squad.remove(alien);
+	for (itr = squad.begin(); itr != squad.end(); itr++)
+	{
+		itr = squad.erase(itr);
+	}
 }

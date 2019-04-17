@@ -17,5 +17,5 @@ public:
 	void setTexture(Texture&);
 	void addMiss(Vector2f);
 	void moveMissiles();
-	void remMiss(Sprite&);
+	void remMiss();
 };
