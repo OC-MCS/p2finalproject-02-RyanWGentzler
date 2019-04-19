@@ -6,7 +6,7 @@ using namespace sf;
 class Level
 {
 private:
-	int level = 1;
+	int level = 0;
 	Texture alienTex1;
 	Texture alienTex2;
 public:

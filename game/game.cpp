@@ -17,7 +17,7 @@ int main()
 {
 	const int WINDOW_WIDTH = 800;
 	const int WINDOW_HEIGHT = 600;
-	int globalTimer = 0, tempTimer = 0;
+	int globalTimer = 0, tempTimer = 0, numdestroyed = 0;
 	bool atLimit = false;
 	Player ship;
 	MissileGroup grp;
@@ -112,12 +112,21 @@ int main()
 			}
 		}
 
-		if (menu.isGameStarted() && !menu.isGameOver())
+		if (menu.isGameStarted() && ship.getLives() > 0 && !menu.isGameOver())
 		{
 			if (globalTimer % 20 == 0)
 				atLimit = squad.move(10);
 
-			if (!squad.aliens() && level.getLevel() == 1)
+			if (!squad.aliens() && level.getLevel() == 0)
+			{
+				squad.setTexture(level.getAlienTexture());
+				for (int i = 0; i < 10; i++)
+				{
+					squad.addAlien(75 * i + 40, 30);
+				}
+				level.setLevel(1);
+			}
+			else if (!squad.aliens() && level.getLevel() == 1)
 			{
 				squad.setTexture(level.getAlienTexture());
 				for (int i = 0; i < 10; i++)
@@ -128,11 +137,7 @@ int main()
 			}
 			else if (!squad.aliens() && level.getLevel() == 2)
 			{
-				squad.setTexture(level.getAlienTexture());
-				for (int i = 0; i < 10; i++)
-				{
-					squad.addAlien(75 * i + 40, 30);
-				}
+				menu.endGame();
 			}
 
 			if (globalTimer - tempTimer >= 60)
@@ -157,6 +162,7 @@ int main()
 				if (squad.intersect(grp.getSprite(i)))
 				{
 					grp.remMiss();
+					numdestroyed++;
 				}
 			}
 
@@ -165,11 +171,12 @@ int main()
 				if (ship.intersect(bmb.getSprite(i)))
 				{
 					bmb.remMiss();
+					squad.move(-(squad.getRandPos().y) + 20);
 				}
 			}
 
 			
-			bmb.moveMissiles();
+			bmb.moveMissiles(level.getLevel());
 			grp.moveMissiles();
 
 			//===========================================================
@@ -192,7 +199,7 @@ int main()
 			if (globalTimer < 1000000)
 				globalTimer++;
 		}
-		menu.draw(window, ship.getLives());
+		menu.draw(window, ship.getLives(), numdestroyed);
 
 		if(!menu.isGameStarted())
 		{

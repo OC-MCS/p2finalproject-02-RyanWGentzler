@@ -36,9 +36,13 @@ void Bombardment::addMiss(Vector2f pos)
 	missiles.push_back(temp);
 }
 
-void Bombardment::moveMissiles()
+void Bombardment::moveMissiles(int level)
 {
-	const int MISDIS = 10;
+	int MISDIS;
+	if (level == 1)
+		MISDIS = 10;
+	else
+		MISDIS = 15;
 	itr = missiles.begin();
 	while (itr != missiles.end())
 	{

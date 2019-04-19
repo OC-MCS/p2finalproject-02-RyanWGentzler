@@ -31,7 +31,7 @@ public:
 	{
 		GameOver = true;
 	}
-	void draw(RenderWindow& win, int life)
+	void draw(RenderWindow& win, int life, int aliens)
 	{
 		Font font;
 		font.loadFromFile("C:\\Windows\\Fonts\\comic.ttf");
@@ -67,11 +67,11 @@ public:
 			destroyed.setPosition(600, 20);
 			win.draw(destroyed);
 
-		//	Text alides(to_string(aliens), font, 20);
-		//	alides.setPosition(470, 20);
-		//	win.draw(alides);
+			Text alides(to_string(aliens), font, 20);
+			alides.setPosition(720, 20);
+			win.draw(alides);
 		}
-		else
+		else if (life <= 0)
 		{
 			Text gameov("Aliens Win", font, 80);
 			gameov.setPosition(win.getSize().x / 8.0f, win.getSize().y / 2.0f - 20);
@@ -87,6 +87,14 @@ public:
 			Text subtitle("Play Again?", font, 20);
 			subtitle.setPosition(win.getSize().x / 2.0f - 60, win.getSize().y / 1.5f);
 			win.draw(subtitle);
+			GameOver = true;
+		}
+		else
+		{
+			Text gameov("You Win", font, 80);
+			gameov.setPosition(win.getSize().x / 8.0f, win.getSize().y / 2.0f - 20);
+			win.draw(gameov);
+
 			GameOver = true;
 		}
 	}

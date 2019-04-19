@@ -24,9 +24,9 @@ Texture& Level::getAlienTexture()
 {
 	Texture* temp = &alienTex1;
 
-	if (level == 1)
+	if (level == 0)
 		temp = &alienTex1;
-	else if (level == 2)
+	else if (level == 1)
 		temp = &alienTex2;
 
 	return *temp;
