@@ -12,7 +12,7 @@ private:
 	Texture txt;
 public:
 	int getSize();
-	Sprite getSprite(int);
+	Sprite& getSprite(int);
 	void draw(RenderWindow&);
 	void setTexture(Texture&);
 	void addMiss(Vector2f);

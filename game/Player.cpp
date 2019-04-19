@@ -16,6 +16,22 @@ int Player::getLives()
 	return lives;
 }
 
+bool Player::intersect(Sprite& other)
+{
+	bool inter = false;
+	if (ship.getGlobalBounds().intersects(other.getGlobalBounds()))
+	{
+		inter =  true;
+		lives--;
+	}
+	return inter;
+}
+
+bool Player::alive()
+{
+	return isAlive;
+}
+
 void Player::setTexture(Texture& shipTex)
 {
 	ship.setTexture(shipTex);
@@ -46,4 +62,12 @@ void Player::move()
 void Player::modlives(int dir)
 {
 	lives += dir;
+	if (lives <= 0)
+		isAlive = false;
+}
+
+void Player::setlives(int set)
+{
+	lives = set;
+	isAlive = true;
 }

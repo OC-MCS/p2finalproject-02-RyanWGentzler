@@ -147,22 +147,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
-    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Bombardment.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="MissileGroup.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Squadron.cpp" />
-    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
-    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Bombardment.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Menus.h" />
     <ClInclude Include="MissileGroup.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Squadron.h" />
-    <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

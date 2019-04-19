@@ -5,7 +5,7 @@ int MissileGroup::getSize()
 	return missiles.size();
 }
 
-Sprite MissileGroup::getSprite(int i)
+Sprite& MissileGroup::getSprite(int i)
 {
 	itr = missiles.begin();
 	for (int t = 0; t < i; t++)

@@ -9,11 +9,14 @@ private:
 	list<Sprite> ::iterator itr;
 	Texture txt;
 	int speed;
+	bool areAliens = false;
 public:
+	bool aliens();
 	void setTexture(Texture&);
 	void addAlien(int, int);
 	void draw(RenderWindow&);
 	bool move(int);
 	bool intersect(Sprite&);
-	void remAlien(Sprite&);
+	Vector2f getRandPos();
+	void remAlien();
 };
