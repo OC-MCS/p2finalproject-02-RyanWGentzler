@@ -1,15 +1,18 @@
 #include "Squadron.h"
 
+//returns whether there are aliens in the list or not
 bool Squadron::aliens()
 {
 	return areAliens;
 }
 
+//sets the texture of the aliens
 void Squadron::setTexture(Texture& txt)
 {
 	this->txt = txt;
 }
 
+//adds an alien to the end of the list
 void Squadron::addAlien(int x, int y)
 {
 	Sprite temp;
@@ -19,6 +22,7 @@ void Squadron::addAlien(int x, int y)
 	areAliens = true;
 }
 
+//draws the list of aliens onto the window 'win'
 void Squadron::draw(RenderWindow& win)
 {
 	for (itr = squad.begin(); itr != squad.end(); itr++)
@@ -27,6 +31,7 @@ void Squadron::draw(RenderWindow& win)
 	}
 }
 
+//moves the whole squad 'y' pixels upwards
 bool Squadron::move(int y)
 {
 	bool limit = false;
@@ -45,6 +50,7 @@ bool Squadron::move(int y)
 	return limit;
 }
 
+//checks to see if any alien intersects with the sprite 'other' and removes the alien if it does
 bool Squadron::intersect(Sprite& other)
 {
 	bool inter = false;
@@ -63,6 +69,7 @@ bool Squadron::intersect(Sprite& other)
 	return inter;
 }
 
+//gets a random position from the list of aliens still alive
 Vector2f Squadron::getRandPos()
 {
 	itr = squad.begin();
@@ -74,6 +81,7 @@ Vector2f Squadron::getRandPos()
 	return itr->getPosition();
 }
 
+//removes an alien from the list
 void Squadron::remAlien()
 {
 	itr = squad.erase(itr);

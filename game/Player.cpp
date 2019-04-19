@@ -1,21 +1,25 @@
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 
+//gets a Sprite Cranberry. Just kidding, it returns the sprite of the player
 Sprite Player::getSprite()
 {
 	return ship;
 }
 
+//returns the position of the sprite for functions that need that specifically
 Vector2f Player::getPosition()
 {
 	return ship.getPosition();
 }
 
+//returns the number of lives that the player currently has
 int Player::getLives()
 {
 	return lives;
 }
 
+//checks to see if the ship intersects with the 'other' sprite (see what I did there?[I guess it wasn't funny, sorry])
 bool Player::intersect(Sprite& other)
 {
 	bool inter = false;
@@ -27,21 +31,25 @@ bool Player::intersect(Sprite& other)
 	return inter;
 }
 
+//returns whether the player is alive or not
 bool Player::alive()
 {
 	return isAlive;
 }
 
+//sets the texture of the ship
 void Player::setTexture(Texture& shipTex)
 {
 	ship.setTexture(shipTex);
 }
 
+//sets the current position of the ship
 void Player::setPosition(float x, float y)
 {
 	ship.setPosition(x, y);
 }
 
+//depending on what direction the player is holding, will move left or right. Stops at the end of the screen
 void Player::move()
 {
 	const float DISTANCE = 5.0;
@@ -59,6 +67,7 @@ void Player::move()
 	}
 }
 
+//modifies the player's lives by 'dir' amount
 void Player::modlives(int dir)
 {
 	lives += dir;
@@ -66,6 +75,7 @@ void Player::modlives(int dir)
 		isAlive = false;
 }
 
+//just straight up sets the player's life total
 void Player::setlives(int set)
 {
 	lives = set;

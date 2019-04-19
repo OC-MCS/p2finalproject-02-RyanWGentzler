@@ -1,10 +1,12 @@
 #include "Bombardment.h"
 
+//returns the size of the array that holds the bombs
 int Bombardment::getSize()
 {
 	return missiles.size();
 }
 
+//gets the sprite from the bomb at position 'i'
 Sprite& Bombardment::getSprite(int i)
 {
 	itr = missiles.begin();
@@ -15,6 +17,7 @@ Sprite& Bombardment::getSprite(int i)
 	return *itr;
 }
 
+//draws all the bombs in the list
 void Bombardment::draw(RenderWindow& win)
 {
 	for (itr = missiles.begin(); itr != missiles.end(); itr++)
@@ -23,11 +26,13 @@ void Bombardment::draw(RenderWindow& win)
 	}
 }
 
+//sets the texture of the list of bombs
 void Bombardment::setTexture(Texture& txt)
 {
 	this->txt = txt;
 }
 
+//adds a bomb to the list
 void Bombardment::addMiss(Vector2f pos)
 {
 	Sprite temp;
@@ -36,6 +41,7 @@ void Bombardment::addMiss(Vector2f pos)
 	missiles.push_back(temp);
 }
 
+//moves the list of bombs down depending on what level it is
 void Bombardment::moveMissiles(int level)
 {
 	int MISDIS;
@@ -58,6 +64,7 @@ void Bombardment::moveMissiles(int level)
 	}
 }
 
+//removes a bomb from the list
 void Bombardment::remMiss()
 {
 	itr = missiles.erase(itr);
